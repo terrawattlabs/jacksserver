@@ -30,31 +30,31 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/asanatasks', function(request, response) {
-  var html;
+  var html = "hello world";
 
   // pull task from asana
-		  var options = {
-		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&limit=10&workspace=64385798792062',
-		  headers: {
-		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
-		  }
-		};
+		//   var options = {
+		//   url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&limit=10&workspace=64385798792062',
+		//   headers: {
+		//     'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
+		//   }
+		// };
 		 
-		function callback(error, response, body) {
-		  if (!error && response.statusCode == 200) {
-		    var info = JSON.parse(body);
-		   	html = info;
-		  }
-		}
+		// function callback(error, response, body) {
+		//   if (!error && response.statusCode == 200) {
+		//     var info = JSON.parse(body);
+		//    	html = info;
+		//   }
+		// }
 		 
-		request.get(options, callback);
+		// request.get(options, callback);
 
   // sort them by date
 
   //compile the html for the slack message
 
 
-  response.send(html);
+  response.render(html);
 });
 
 
