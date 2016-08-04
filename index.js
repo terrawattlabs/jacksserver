@@ -30,7 +30,7 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/asanatasks', function(request, response) {
-  var html;
+
 
   // pull task from asana
 		  var options = {
@@ -40,25 +40,93 @@ app.get('/asanatasks', function(request, response) {
 		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
 		  }
 		};
-		 
+		
+		var asanaData;
 		function callback(error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
-		    html = info;
-		   console.log(info);
+		    asanaData = info;
+		    processData(asanaData);
+		   //console.log(info);
 		  } else {
-		  	console.log(error);
+		  	//console.log(error);
 		  }
 		};
 		 
 		req(options, callback);
 
-  // sort them by date
+		  // sort them by date
+
+function processData (d) {
+
+	var data = d.data;
+	var baseLink = "https://app.asana.com/0/64385821639033/";
+	var processed = [];
+	var noDate = [];
+
+	for (var i = data.length - 1; i >= 0; i--) {
+	  
+	  var obj = {};
+
+	  var name = data[i].name;
+	  var link = baseLink + data[i].id;
+	  
+
+	  obj.name = name;
+	 
+	  obj.link = link;
+
+	  if (data[i].due_on == null) {
+	    var mom = "No Due Date";
+	    obj.mom = mom;
+	    noDate.push(obj);
+	  } else {
+	  var due = new Date(data[i].due_on);
+	  var mom = moment(due).fromNow();
+	  obj.mom = mom;
+	  obj.due = due;
+	  processed.push(obj);
+	   
+	  };
+	  
+	};
+
+	processed.sort(function (a, b) {
+	  if (a.due > b.due) {
+	    return 1;
+	  }
+	  if (a.due < b.due) {
+	    return -1;
+	  }
+	  // a must be equal to b
+	  return 0;
+	});
+
+	console.log(processed);
+	console.log(noDate);
+	compilehtml(processed,noDate);
+
+	};
+
+
+
+
+
 
   //compile the html for the slack message
+  function compilehtml (p,n) {
+  	var html = "";
+  	for (var i = 0 ; i <= p.length - 1; i++) {
+  		
+  		var task = "<li>" + p.name + "due "+ p.mom + " <a href='" + p.link + "'>View</a></li>"
+  		html = html + task;
+  	};
+  	console.log(html);
+  };
 
 
-  response.send(html);
+
+  response.send("Awesome? I hope!");
 });
 
 
