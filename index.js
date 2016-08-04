@@ -3,7 +3,7 @@ var opbeat = require('opbeat').start()
 // modules go here
 var cool = require('cool-ascii-faces');
 var moment = require('moment');
-var request = require('request');
+var req = require('request');
 
 // end modules
 
@@ -50,7 +50,7 @@ app.get('/asanatasks', function(request, response) {
 		  }
 		};
 		 
-		request(options, callback);
+		req(options, callback);
 
   // sort them by date
 
