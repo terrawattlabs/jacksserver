@@ -124,11 +124,12 @@ function processData (d) {
     };
     html = html + ""
   	console.log(html);
+  	response.status(200).send(html);
   };
 
 
 
-  response.status(200).send(html);
+  
 });
 
 
