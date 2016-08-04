@@ -38,7 +38,7 @@ app.post('/asanatasks', function(request, response) {
 
 		  var options = {
 		  method: "GET",
-		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&completed_since=now&limit=10&workspace=64385798792062',
+		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&completed_since=now&limit=20&workspace=64385798792062',
 		  headers: {
 		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
 		  }
@@ -117,7 +117,7 @@ function processData (d) {
 	};
 
 
-var testing = {
+var testing = [{
     "text": "This is a line of text.\nAnd this is another one.",
     "attachments": [
         {
@@ -144,10 +144,45 @@ var testing = {
             "ts": 123456789
         }
     ]
+},
+{
+    "text": "This is a line of text.\nAnd this is another one.",
+    "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            "color": "#36a64f",
+            "pretext": "Optional text that appears above the attachment block",
+            "author_name": "Bobby Tables",
+            "author_link": "http://flickr.com/bobby/",
+            "author_icon": "http://flickr.com/icons/bobby.jpg",
+            "title": "Slack API Documentation",
+            "title_link": "https://api.slack.com/",
+            "text": "Optional text that appears within the attachment",
+            "fields": [
+                {
+                    "title": "Priority",
+                    "value": "High",
+                    "short": false
+                }
+            ],
+            "image_url": "http://my-website.com/path/to/image.jpg",
+            "thumb_url": "http://example.com/path/to/thumb.png",
+            "footer": "Slack API",
+            "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
+            "ts": 123456789
+        }
+    ]
+},
+
+
+
+function compileAttachment (p, n) {
+	for (var i = 0 ; i <= 3; i++) {
+      
+      var task = "*" + p[i].name + "* _due "+ p[i].mom + "_ <" + p[i].link + "|View>\n";
+      html = html + task;
+    };
 };
-
-
-
 
 
 
