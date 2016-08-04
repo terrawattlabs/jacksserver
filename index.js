@@ -29,13 +29,13 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-app.get('/asanatasks', function(request, response) {
+app.post('/asanatasks', function(request, response) {
 
 
   // pull task from asana
 		  var options = {
 		  method: "GET",
-		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&limit=10&workspace=64385798792062',
+		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&completed_since=now&limit=10&workspace=64385798792062',
 		  headers: {
 		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
 		  }
@@ -114,19 +114,21 @@ function processData (d) {
 
 
   //compile the html for the slack message
+  var html;
   function compilehtml (p,n) {
-  	var html = "";
-  	for (var i = 0 ; i <= p.length - 1; i++) {
-  		
-  		var task = "<li>" + p.name + "due "+ p.mom + " <a href='" + p.link + "'>View</a></li>";
-  		html = html + task;
-  	};
+  	 html = "";
+    for (var i = 0 ; i <= p.length - 1; i++) {
+      
+      var task = "*" + p[i].name + "* _due "+ p[i].mom + "_ <" + p[i].link + "|View>\n";
+      html = html + task;
+    };
+    html = html + ""
   	console.log(html);
   };
 
 
 
-  response.send(html);
+  res.status(200).send(html);
 });
 
 
