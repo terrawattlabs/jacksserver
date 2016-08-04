@@ -30,7 +30,7 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/asanatasks', function(request, response) {
-  var html = "hello!";
+  var html;
 
   // pull task from asana
 		  var options = {
@@ -44,6 +44,7 @@ app.get('/asanatasks', function(request, response) {
 		function callback(error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
+		    html = info;
 		   console.log(info);
 		  } else {
 		  	console.log(error);
