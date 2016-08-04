@@ -31,7 +31,7 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
-	console.log(request);
+	console.log(request.body);
 
   // pull task from asana
   function pullData() {
