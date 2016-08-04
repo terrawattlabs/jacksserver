@@ -117,7 +117,7 @@ function processData (d) {
 	};
 
 
-var testing = [{
+var testing = {
     "text": "This is a line of text.\nAnd this is another one.",
     "attachments": [
         {
@@ -142,12 +142,7 @@ var testing = [{
             "footer": "Slack API",
             "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
             "ts": 123456789
-        }
-    ]
-},
-{
-    "text": "This is a line of text.\nAnd this is another one.",
-    "attachments": [
+        },
         {
             "fallback": "Required plain-text summary of the attachment.",
             "color": "#36a64f",
@@ -171,8 +166,9 @@ var testing = [{
             "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
             "ts": 123456789
         }
+
     ]
-},
+}
 
 
 
