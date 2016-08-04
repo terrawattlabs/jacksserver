@@ -31,8 +31,12 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
+	console.log(request);
 
   // pull task from asana
+  function pullData() {
+
+
 		  var options = {
 		  method: "GET",
 		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&completed_since=now&limit=10&workspace=64385798792062',
@@ -54,6 +58,8 @@ app.post('/asanatasks', function(request, response) {
 		};
 		 
 		req(options, callback);
+
+	 };
 
 		  // sort them by date
 
