@@ -102,8 +102,8 @@ function processData (d) {
 	  return 0;
 	});
 
-	console.log(processed);
-	console.log(noDate);
+	//console.log(processed);
+	//console.log(noDate);
 	compilehtml(processed,noDate);
 
 	};
@@ -118,7 +118,7 @@ function processData (d) {
   	var html = "";
   	for (var i = 0 ; i <= p.length - 1; i++) {
   		
-  		var task = "<li>" + p.name + "due "+ p.mom + " <a href='" + p.link + "'>View</a></li>"
+  		var task = "<li>" + p.name + "due "+ p.mom + " <a href='" + p.link + "'>View</a></li>";
   		html = html + task;
   	};
   	console.log(html);
@@ -126,7 +126,7 @@ function processData (d) {
 
 
 
-  response.send("Awesome? I hope!");
+  response.send(html);
 });
 
 
