@@ -34,6 +34,7 @@ app.get('/asanatasks', function(request, response) {
 
   // pull task from asana
 		  var options = {
+		  method: "GET",
 		  url: 'https://app.asana.com/api/1.0/tasks?opt_fields=id,due_on,name,notes,projects&assignee=10293349666829&limit=10&workspace=64385798792062',
 		  headers: {
 		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
@@ -49,7 +50,7 @@ app.get('/asanatasks', function(request, response) {
 		  }
 		};
 		 
-		request.get(options, callback);
+		request(options, callback);
 
   // sort them by date
 
