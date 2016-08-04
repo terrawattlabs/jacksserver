@@ -54,7 +54,7 @@ app.get('/asanatasks', function(request, response) {
   //compile the html for the slack message
 
 
-  response.render(html);
+  response.send(html);
 });
 
 
