@@ -31,7 +31,6 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
-	console.log(request.body.user_id);
 
   // pull task from asana
   function pullData() {
@@ -60,6 +59,8 @@ app.post('/asanatasks', function(request, response) {
 		req(options, callback);
 
 	 };
+
+	 pullData();
 
 		  // sort them by date
 
