@@ -57,6 +57,8 @@ app.post('/asanatasks', function(request, response) {
 		req(options, callback);
 
 	 };
+
+	 pullProjects();
 	 
 
   // pull task from asana
