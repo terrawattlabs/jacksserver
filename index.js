@@ -31,6 +31,32 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
+		var projectList;
+
+		// pull projects
+	  function pullProjects() {
+
+
+		  var options = {
+		  method: "GET",
+		  url: 'https://app.asana.com/api/1.0/workspaces/64385798792062/projects?opt_fields=color,name&limit=10',
+		  headers: {
+		    'Authorization': 'Bearer 0/d1b679d62915f096030442a49841eddf'
+		  }
+		};
+		
+		function callback(error, response, body) {
+		  if (!error && response.statusCode == 200) {
+		    var info = JSON.parse(body);
+		    projectList = info.data;
+		  } else {
+		  	//console.log(error);
+		  }
+		};
+		 
+		req(options, callback);
+
+	 };
 
   // pull task from asana
   function pullData() {
@@ -64,6 +90,15 @@ app.post('/asanatasks', function(request, response) {
 	 pullData();
 
 		  // sort them by date
+
+
+function search(nameKey, array){
+    for (var i=0; i < array.length; i++) {
+        if (array[i].id === nameKey) {
+            return array[i];
+        }
+    }
+};
 
 function processData (d) {
 
@@ -99,6 +134,12 @@ function processData (d) {
           lastWeek: '[Last] dddd',
           sameElse: 'MMM Do'
       });
+
+    var proj = search(data[i].projects[0].id, projectList);
+
+    obj.projName = proj.name;
+    obj.projColor = proj.color;
+
       obj.cal = cal;
 	  obj.mom = mom;
 	  obj.due = due;
@@ -169,7 +210,7 @@ function compileAttachment (p, n) {
 	for (var i = 0 ; i <= 4; i++) {
 		var aObj = {};
 		aObj.fallback = "Required plain-text summary of the attachment.";
-		aObj.color = "#2ecc71";
+		aObj.color = p[i].projColor;
 		aObj.title = p[i].name;
 		aObj.title_link = p[i].link;
 		var fieldsArray = [];
