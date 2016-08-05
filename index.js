@@ -31,7 +31,6 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
-		var projectList;
 
 		// pull projects
 	  function pullProjects() {
@@ -49,7 +48,7 @@ app.post('/asanatasks', function(request, response) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
 		    //console.log(info);
-		    setProjectList(info.data);
+		    pullData(info);
 		  } else {
 		  	console.log(error);
 		  }
@@ -58,15 +57,10 @@ app.post('/asanatasks', function(request, response) {
 		req(options, callback);
 
 	 };
-
-	 function setProjectList (d) {
-	 	projectList = d;
-	 	console.log(projectList);
-	 };
 	 
 
   // pull task from asana
-  function pullData() {
+  function pullData(proj) {
 
 
 		  var options = {
@@ -83,7 +77,7 @@ app.post('/asanatasks', function(request, response) {
 		    var info = JSON.parse(body);
 		    asanaData = info;
 		    //console.log(asanaData);
-		    processData(asanaData);
+		    processData(asanaData,proj);
 		   //console.log(info);
 		  } else {
 		  	//console.log(error);
@@ -94,15 +88,21 @@ app.post('/asanatasks', function(request, response) {
 
 	 };
 
-	 pullData();
 
 		  // sort them by date
 
+function search(n, a){
+    for (var i=0; i < a.length; i++) {
+        if (a[i].id === n) {
+            return a[i];
+        }
+    }
+};
 
 
+function processData (d, p) {
 
-function processData (d) {
-
+	var projectList = p.data;
 	var data = d.data;
 	var baseLink = "https://app.asana.com/0/64385821639033/";
 	var processed = [];
@@ -168,14 +168,7 @@ function processData (d) {
 
 	};
 
-	function search(n, a){
-		console.log(a);
-    for (var i=0; i < a.length; i++) {
-        if (a[i].id === n) {
-            return a[i];
-        }
-    }
-};
+	
 
 
 var testing = {
