@@ -90,7 +90,16 @@ function processData (d) {
 	    noDate.push(obj);
 	  } else {
 	  var due = moment(data[i].due_on).hour(23).minute(59);
-	  var mom = due.fromNow();
+    var mom = due.fromNow();
+    var cal = due.calendar(null, {
+          sameDay: '[Today]',
+          nextDay: '[Tomorrow]',
+          nextWeek: 'dddd',
+          lastDay: '[Yesterday]',
+          lastWeek: '[Last] dddd',
+          sameElse: 'MMM Do'
+      });
+      obj.cal = cal;
 	  obj.mom = mom;
 	  obj.due = due;
 	  processed.push(obj);
@@ -166,7 +175,7 @@ function compileAttachment (p, n) {
 		var fieldsArray = [];
 		var dueObj = {};
 		dueObj.title = "Due";
-		dueObj.value = p[i].mom;
+		dueObj.value = p[i].cal;
 		fieldsArray.push(dueObj);
 		aObj.fields = fieldsArray;
 		attachmentsArray.push(aObj);
