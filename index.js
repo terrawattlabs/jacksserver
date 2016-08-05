@@ -49,7 +49,7 @@ app.post('/asanatasks', function(request, response) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
 		    asanaData = info;
-		    console.log(asanaData);
+		    //console.log(asanaData);
 		    processData(asanaData);
 		   //console.log(info);
 		  } else {
@@ -89,8 +89,8 @@ function processData (d) {
 	    obj.mom = mom;
 	    noDate.push(obj);
 	  } else {
-	  var due = new Date(data[i].due_on);
-	  var mom = moment(due).fromNow();
+	  var due = moment(data[i].due_on).hour(23).minute(59);
+	  var mom = due.fromNow();
 	  obj.mom = mom;
 	  obj.due = due;
 	  processed.push(obj);
