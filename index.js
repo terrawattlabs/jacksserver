@@ -31,7 +31,7 @@ app.get('/cool', function(request, response) {
 
 app.post('/asanatasks', function(request, response) {
 
-		var projectList;
+		
 
 		// pull projects
 	  function pullProjects() {
@@ -48,9 +48,10 @@ app.post('/asanatasks', function(request, response) {
 		function callback(error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
-		    projectList = info.data;
+		    console.log(info);
+		    return info.data
 		  } else {
-		  	//console.log(error);
+		  	console.log(error);
 		  }
 		};
 		 
@@ -58,7 +59,7 @@ app.post('/asanatasks', function(request, response) {
 
 	 };
 
-	 pullProjects();
+	 var projectList = pullProjects();
 
   // pull task from asana
   function pullData() {
