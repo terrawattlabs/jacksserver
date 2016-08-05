@@ -49,6 +49,7 @@ app.post('/asanatasks', function(request, response) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
 		    asanaData = info;
+		    console.log(asanaData);
 		    processData(asanaData);
 		   //console.log(info);
 		  } else {
@@ -156,7 +157,7 @@ var attachmentsArray = [];
 
 function compileAttachment (p, n) {
 	
-	for (var i = 0 ; i <= 3; i++) {
+	for (var i = 0 ; i <= 4; i++) {
 		var aObj = {};
 		aObj.fallback = "Required plain-text summary of the attachment.";
 		aObj.color = "#2ecc71";
@@ -177,22 +178,28 @@ function compileAttachment (p, n) {
 
 
   //compile the html for the slack message
-  var html;
-  function compilehtml (p,n) {
-  	 html = "";
-    for (var i = 0 ; i <= p.length - 1; i++) {
+  // var html;
+  // function compilehtml (p,n) {
+  // 	 html = "";
+  //   for (var i = 0 ; i <= p.length - 1; i++) {
       
-      var task = "*" + p[i].name + "* _due "+ p[i].mom + "_ <" + p[i].link + "|View>\n";
-      html = html + task;
-    };
-    html = html + ""
-  	console.log(html);
-  	response.status(200).send(testing);
-  };
+  //     var task = "*" + p[i].name + "* _due "+ p[i].mom + "_ <" + p[i].link + "|View>\n";
+  //     html = html + task;
+  //   };
+  //   html = html + ""
+  // 	console.log(html);
+  // 	response.status(200).send(testing);
+  // };
 
 
 
   
+});
+
+app.post('/slackinteractive', function(request, response) {
+
+
+	
 });
 
 
