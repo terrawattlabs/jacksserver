@@ -48,7 +48,7 @@ app.post('/asanatasks', function(request, response) {
 		function callback(error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
-		    console.log(info);
+		    //console.log(info);
 		    return info.data
 		  } else {
 		  	console.log(error);
@@ -95,13 +95,7 @@ app.post('/asanatasks', function(request, response) {
 		  // sort them by date
 
 
-function search(nameKey, array){
-    for (var i=0; i < array.length; i++) {
-        if (array[i].id === nameKey) {
-            return array[i];
-        }
-    }
-};
+
 
 function processData (d) {
 
@@ -169,6 +163,14 @@ function processData (d) {
 	compileAttachment(processed,noDate);
 
 	};
+
+	function search(n, a){
+    for (var i=0; i < a.length; i++) {
+        if (a[i].id === n) {
+            return a[i];
+        }
+    }
+};
 
 
 var testing = {
