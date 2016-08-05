@@ -58,6 +58,8 @@ app.post('/asanatasks', function(request, response) {
 
 	 };
 
+	 pullProjects();
+
   // pull task from asana
   function pullData() {
 
