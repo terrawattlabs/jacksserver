@@ -169,6 +169,7 @@ function processData (d) {
 	};
 
 	function search(n, a){
+		console.log(a);
     for (var i=0; i < a.length; i++) {
         if (a[i].id === n) {
             return a[i];
