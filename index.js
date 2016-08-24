@@ -42,6 +42,7 @@ app.get('/greetings', function(request, response) {
 		 	var n = dieToss();
 		 	console.log(n);
 		 	if (n === 1) {
+		 		console.log('true');
 		 		resolve(value);
 		 	} else {
 		 		reject(error);
