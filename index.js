@@ -40,6 +40,7 @@ app.get('/greetings', function(request, response) {
 
 		 var promise = new RSVP.Promise(function(resolve, reject) {
 		 	var n = dieToss();
+		 	console.log(n);
 		 	if (n === 1) {
 		 		resolve(value);
 		 	} else {
