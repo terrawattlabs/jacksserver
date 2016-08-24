@@ -5,6 +5,7 @@ var cool = require('cool-ascii-faces');
 var moment = require('moment');
 var req = require('request');
 var greetings = require("./node_modules/custom/greetings.js");
+var asana = require("./node_modules/custom/asana.js")
 
 // end modules
 
@@ -34,6 +35,12 @@ app.get('/greetings', function(request, response) {
   	
 
   response.send(greetings.sayHelloInEnglish());
+});
+
+app.get('/taskwidget', function(request, response) {
+	  	
+
+  response.send(asana.pulltasks());
 });
 
 app.post('/asanatasks', function(request, response) {
