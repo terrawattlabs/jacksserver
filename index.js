@@ -50,13 +50,14 @@ app.get('/greetings', function(request, response) {
 		  
 		});
 
+		 var x;
 		promise.then(function(value) {
-		  response.send(greetings.sayHelloInEnglish());
+		  x = greetings.sayHelloInEnglish();
 		}).catch(function(error) {
-		  response.send(greetings.sayHelloInSpanish())
+		  x = send(greetings.sayHelloInSpanish();
 		});
 
-  ;
+   response.send(x);
 });
 
 app.get('/taskwidget', function(request, response) {
