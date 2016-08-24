@@ -55,9 +55,11 @@ app.get('/greetings', function(request, response) {
 		  x = greetings.sayHelloInEnglish();
 		}).catch(function(error) {
 		  x = greetings.sayHelloInSpanish();
+		}).finally(function(){
+			response.send(x);
 		});
 
-   response.send(x);
+   
 });
 
 app.get('/taskwidget', function(request, response) {
