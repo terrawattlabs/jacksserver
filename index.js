@@ -4,6 +4,7 @@ var opbeat = require('opbeat').start()
 var cool = require('cool-ascii-faces');
 var moment = require('moment');
 var req = require('request');
+var greetings = require("./node_modules/custom/greetings.js");
 
 // end modules
 
@@ -27,6 +28,12 @@ app.get('/', function(request, response) {
 
 app.get('/cool', function(request, response) {
   response.send(cool());
+});
+
+app.get('/greetings', function(request, response) {
+  	
+
+  response.send(greetings.sayHelloInEnglish());
 });
 
 app.post('/asanatasks', function(request, response) {
