@@ -25,6 +25,7 @@ exports.pulltasks = function() {
 		    var info = JSON.parse(body);
 		    console.log(info);
 		    projectList = info;
+		    
 		  } else {
 		  	console.log(error);
 		  }
@@ -32,9 +33,9 @@ exports.pulltasks = function() {
 		 
 		req(options, callback);
 
+return projectList;
 
-
-  return projectList;
+  
 };
    
 exports.sayHelloInSpanish = function() {

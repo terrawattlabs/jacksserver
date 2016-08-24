@@ -1,11 +1,12 @@
 var opbeat = require('opbeat').start()
 
 // modules go here
+var RSVP = require('rsvp');
 var cool = require('cool-ascii-faces');
 var moment = require('moment');
 var req = require('request');
-var greetings = require("./node_modules/custom/greetings.js");
-var asana = require("./node_modules/custom/asana.js")
+var greetings = require("./custom/greetings.js");
+var asana = require("./custom/asana.js");
 
 // end modules
 
@@ -32,9 +33,28 @@ app.get('/cool', function(request, response) {
 });
 
 app.get('/greetings', function(request, response) {
-  	
 
-  response.send(greetings.sayHelloInEnglish());
+		function dieToss() {
+		  return Math.floor(Math.random() * 2) + 1;
+		};
+
+		 var promise = new RSVP.Promise(function(resolve, reject) {
+		 	var n = dieToss();
+		 	if (n === 1) {
+		 		resolve(value);
+		 	} else {
+		 		reject(error);
+		 	};
+		  
+		});
+
+		promise.then(function(value) {
+		  response.send(greetings.sayHelloInEnglish());
+		}).catch(function(error) {
+		  response.send(greetings.sayHelloInSpanish())
+		});
+
+  ;
 });
 
 app.get('/taskwidget', function(request, response) {
