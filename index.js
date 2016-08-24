@@ -54,7 +54,7 @@ app.get('/greetings', function(request, response) {
 		promise.then(function(value) {
 		  x = greetings.sayHelloInEnglish();
 		}).catch(function(error) {
-		  x = send(greetings.sayHelloInSpanish();
+		  x = greetings.sayHelloInSpanish();
 		});
 
    response.send(x);
