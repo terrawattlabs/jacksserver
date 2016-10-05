@@ -3,14 +3,12 @@ var moment = require('moment');
 var req = require('request');
 
 var exports = module.exports = {};
+
         
 exports.pulltasks = function() {
 	// pull projects
 
 	var projectList;
-
-
-
 
 		  var options = {
 		  method: "GET",
@@ -23,9 +21,10 @@ exports.pulltasks = function() {
 		function callback(error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
-		    console.log(info);
-		    projectList = info;
-		    
+		    //console.log(info);
+		    //projectList = info;
+
+		    replyData(info);
 		  } else {
 		  	console.log(error);
 		  }
@@ -33,9 +32,15 @@ exports.pulltasks = function() {
 		 
 		req(options, callback);
 
-return projectList;
+		function replyData (d){
+			return d;
+		};
 
   
+};
+
+function pullProjects (){
+
 };
    
 exports.sayHelloInSpanish = function() {

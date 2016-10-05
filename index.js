@@ -7,6 +7,7 @@ var moment = require('moment');
 var req = require('request');
 var greetings = require("./custom/greetings.js");
 var asana = require("./custom/asana.js");
+var shortid = require('shortid');
 
 // end modules
 
@@ -18,7 +19,7 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-app.use(opbeat.middleware.express())
+app.use(opbeat.middleware.express());
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -32,33 +33,13 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
+app.get('/createid', function(request, response) {
+  response.send(shortid.generate());
+});
+
 app.get('/greetings', function(request, response) {
 
-		function dieToss() {
-		  return Math.floor(Math.random() * 2) + 1;
-		};
-
-		 var promise = new RSVP.Promise(function(resolve, reject) {
-		 	var n = dieToss();
-		 	console.log(n);
-		 	if (n === 1) {
-		 		console.log('true');
-		 		resolve(value);
-		 	} else {
-		 		reject(error);
-		 	};
-		  
-		});
-
-		 var x;
-		promise.then(function(value) {
-		  x = greetings.sayHelloInEnglish();
-		}).catch(function(error) {
-		  x = greetings.sayHelloInSpanish();
-		}).finally(function(){
-			response.send(x);
-		});
-
+		response.send(asana.pulltasks())
    
 });
 
