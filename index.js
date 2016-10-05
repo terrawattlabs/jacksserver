@@ -33,7 +33,7 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-app.get('/createid', function(request, response) {
+app.get('/magictask/createid', function(request, response) {
   response.send(shortid.generate());
 });
 
