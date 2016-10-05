@@ -37,6 +37,10 @@ app.get('/magictask/createid', function(request, response) {
   response.send(shortid.generate());
 });
 
+app.post('/magictask/newsignup', function(request,response){
+	response.send(shortid.generate());
+});
+
 app.get('/greetings', function(request, response) {
 
 		response.send(asana.pulltasks())
