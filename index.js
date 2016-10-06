@@ -42,7 +42,33 @@ app.get('/magictask/createid', function(request, response) {
 });
 
 app.post('/magictask/newsignup', function(request,response){
-	response.send(shortid.generate());
+		
+	var id = shortid.generate();
+	var d = {"email": "testing@email.com", "uniqueid": id};
+
+	 var options = {
+		  method: "POST",
+		  url: 'https://hooks.zapier.com/hooks/catch/1071793/6z7nh2/',
+		  headers: {},
+		  data: d
+		};
+		
+		 var callback = function (error, response, body){
+		 	if (!error && response.statusCode == 200) {
+		    var info = JSON.parse(body);
+		    console.log(info);
+	
+		  } else {
+		  	console.log(error);
+		  }
+
+		 };
+
+		req(options, callback);
+
+
+
+	response.send(id);
 });
 
 app.get('/greetings', function(request, response) {
