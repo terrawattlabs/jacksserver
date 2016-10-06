@@ -45,19 +45,21 @@ app.post('/magictask/newsignup', function(request,response){
 		
 	console.log(request.data);	
 	var id = shortid.generate();
-	var d = {"email": "testing@email.com", "uniqueid": id};
+	var data = {"email": 
+	"testing@email.com", 
+	"uniqueid": id
+	};
 
 	 var options = {
 		  method: "POST",
 		  url: 'http://requestb.in/ufl2hsuf',
 		  headers: {},
-		  body: "hello world"
+		  body: data
 		};
 		
 		 var callback = function (error, response, body){
 		 	if (!error && response.statusCode == 200) {
-			console.log(response);
-			console.log(body);    
+			   
 			console.log('ran callback');
 
 	
