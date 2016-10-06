@@ -56,6 +56,7 @@ app.post('/magictask/newsignup', function(request,response){
 		 var callback = function (error, response, body){
 		 	if (!error && response.statusCode == 200) {
 		    var info = JSON.parse(body);
+		    console.log('ran callback');
 		    console.log(info);
 	
 		  } else {
