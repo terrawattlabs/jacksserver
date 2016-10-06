@@ -51,7 +51,7 @@ app.post('/magictask/newsignup', function(request,response){
 		  method: "POST",
 		  url: 'http://requestb.in/ufl2hsuf',
 		  headers: {},
-		  body: d
+		  body: "hello world"
 		};
 		
 		 var callback = function (error, response, body){
