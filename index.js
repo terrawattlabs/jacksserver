@@ -52,7 +52,7 @@ app.post('/magictask/newsignup', function(request,response){
 
 	 var options = {
 		  method: "POST",
-		  url: 'http://requestb.in/ufl2hsuf',
+		  url: 'https://hooks.zapier.com/hooks/catch/1071793/6z7nh2/',
 		  headers: {},
 		  json: data
 		};
