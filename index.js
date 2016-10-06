@@ -47,6 +47,7 @@ app.post('/magictask/newsignup', function(request,response){
 	var id = shortid.generate();
 	var data = {"email": 
 	request.body.email, 
+	"referrer": request.body.referrer,
 	"uniqueid": id
 	};
 
