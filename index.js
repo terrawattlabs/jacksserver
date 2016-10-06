@@ -43,6 +43,7 @@ app.get('/magictask/createid', function(request, response) {
 
 app.post('/magictask/newsignup', function(request,response){
 		
+	console.log(request.data);	
 	var id = shortid.generate();
 	var d = {"email": "testing@email.com", "uniqueid": id};
 
