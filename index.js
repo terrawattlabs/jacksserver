@@ -51,7 +51,7 @@ app.post('/magictask/newsignup', function(request,response){
 		  method: "POST",
 		  url: 'http://requestb.in/ufl2hsuf',
 		  headers: {},
-		  data: d
+		  body: d
 		};
 		
 		 var callback = function (error, response, body){
@@ -59,7 +59,7 @@ app.post('/magictask/newsignup', function(request,response){
 			console.log(response);
 			console.log(body);    
 			console.log('ran callback');
-		    console.log(info);
+
 	
 		  } else {
 		  	console.log(error);
