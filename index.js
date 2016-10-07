@@ -41,6 +41,8 @@ app.get('/magictask/createid', function(request, response) {
   response.send(shortid.generate());
 });
 
+// magic task
+
 app.post('/magictask/newsignup', function(request,response){
 		
 	console.log(request.body);	
@@ -76,6 +78,17 @@ app.post('/magictask/newsignup', function(request,response){
 
 	response.send(id);
 });
+
+app.get('/magictask/asana/auth', function(request, response) {
+
+		console.log(request.body);
+   
+});
+
+
+
+
+//magic task
 
 app.get('/greetings', function(request, response) {
 
