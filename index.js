@@ -39,6 +39,29 @@ app.get('/cool', function(request, response) {
 
 app.get('/magictask/createid', function(request, response) {
   response.send(shortid.generate());
+
+  	 var options = {
+		  method: "POST",
+		  url: 'https://app.asana.com/-/oauth_token',
+		  headers: {},
+		  json: data
+		};
+		
+		 var callback = function (error, response, body){
+		 	if (!error && response.statusCode == 200) {
+			   
+			console.log('ran callback');
+
+	
+		  } else {
+		  	console.log(error);
+		  }
+
+		 };
+
+		req(options, callback);
+
+
 });
 
 // magic task
@@ -82,6 +105,22 @@ app.post('/magictask/newsignup', function(request,response){
 app.get('/magictask/asana/auth', function(request, response) {
 
 		console.log(request.query.code);
+
+		var c = request.query.code;
+
+	req.post({url:'https://app.asana.com/-/oauth_token', 
+		form: {
+                grant_type: 'authorization_code',
+                client_id: '192803788558688',
+                client_secret: 'e23526b7eb519cdfb53459eed6737e52',
+                redirect_uri: 'https://jacksserver.herokuapp.com/magictask/asana/auth',
+                code: c
+            }}, 
+		function(err,httpResponse,body){
+		console.log(err);
+		console.log(httpResponse);
+		console.log(body);
+	});
 
 		response.send('it worked I think');
    
