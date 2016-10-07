@@ -81,7 +81,9 @@ app.post('/magictask/newsignup', function(request,response){
 
 app.get('/magictask/asana/auth', function(request, response) {
 
-		console.log(request.body);
+		console.log(request.body.code);
+
+		response.send('it worked I think');
    
 });
 
