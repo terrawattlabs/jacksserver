@@ -164,6 +164,7 @@ app.post('/magictask/asana/refresh', function(request, response) {
 	response.set('Access-Control-Allow-Origin', 'https://magic-task.stamplayapp.com');
 
 		var refresh = request.body.refresh;
+		console.log(request.body);
 
 	req.post({url:'https://app.asana.com/-/oauth_token', 
 		form: {
