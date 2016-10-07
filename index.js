@@ -107,6 +107,12 @@ app.get('/magictask/asana/auth', function(request, response) {
 		console.log(request.query.code);
 
 		var c = request.query.code;
+		var user_token;
+		var user_id;
+		var user_email;
+		var user_name;
+		var user_refresh_token;
+		var respURL;
 
 	req.post({url:'https://app.asana.com/-/oauth_token', 
 		form: {
@@ -117,13 +123,24 @@ app.get('/magictask/asana/auth', function(request, response) {
                 code: c
             }}, 
 		function(err,httpResponse,body){
-		console.log(err);
-		console.log(httpResponse);
-		console.log(body);
+			user_token = body.access_token;
+			user_id = body.data.id;
+			user_email = body.data.email;
+			user_name = body.data.name;
+			user_refresh_token = body.refresh_token;
+			respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
+			+ "?token=" user_token
+			+ "&id="user_id
+			+ "&id="user_email
+			+ "&id="user_name
+			+ "&id="user_refresh_token;
+
+			response.redirect(respURL);
+
+
 	});
 
-		response.send('it worked I think');
-		response.redirect('https://magic-task.stamplayapp.com/#/success/asana');
+		
    
 });
 
