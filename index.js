@@ -112,7 +112,7 @@ app.get('/magictask/asana/auth', function(request, response) {
 		var user_email;
 		var user_name;
 		var user_refresh_token;
-		var respURL;
+		var respURL = 'http://www.google.com';
 
 	req.post({url:'https://app.asana.com/-/oauth_token', 
 		form: {
@@ -124,9 +124,10 @@ app.get('/magictask/asana/auth', function(request, response) {
             }}, 
 		function(err,httpResponse,body){
 
-			console.log(body);
-			console.log('spacing    provide some spacing please    ');
-			console.log(httpResponse);
+			console.log(body.aaccess_token);
+			var jsonbody = JSON.stringify(body);
+			console.log(jsonbody.access_token);
+
 			// user_token = body.access_token;
 			// user_id = body.data.id;
 			// user_email = body.data.email;
@@ -139,13 +140,16 @@ app.get('/magictask/asana/auth', function(request, response) {
 			// + "&id=" + user_name
 			// + "&id=" + user_refresh_token;
 
-			respURL = 'http://www.google.com';
+			
 
 
 	});
 
-		// response.redirect(respURL);
-		response.send('i think it worked');
+		response.writeHead(301,
+			  {Location: respURL}
+			);
+			response.end();
+		// response.send('i think it worked');
    
 });
 
