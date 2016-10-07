@@ -140,9 +140,9 @@ app.get('/magictask/asana/auth', function(request, response) {
 			var respURL = "http://magic-task.stamplayapp.com/#/success/asana" 
 			+ "?token=" + user_token
 			+ "&id=" + user_id
-			+ "&id=" + user_email
-			+ "&id=" + user_name
-			+ "&id=" + user_refresh_token;
+			+ "&email=" + user_email
+			+ "&name=" + user_name
+			+ "&refresh=" + user_refresh_token;
 
 
 			output(respURL);
