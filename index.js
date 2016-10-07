@@ -130,7 +130,7 @@ app.get('/magictask/asana/auth', function(request, response) {
 
 			console.log(body.aaccess_token);
 			var jsonbody = JSON.parse(body);
-			console.log(jsonbody.access_token);
+			console.log(jsonbody);
 
 			user_token = jsonbody.access_token;
 			user_id = jsonbody.data.id;
