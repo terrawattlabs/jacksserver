@@ -123,6 +123,7 @@ app.get('/magictask/asana/auth', function(request, response) {
 	});
 
 		response.send('it worked I think');
+		response.redirect('https://magic-task.stamplayapp.com/#/success/asana');
    
 });
 
