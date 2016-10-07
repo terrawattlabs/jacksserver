@@ -187,7 +187,7 @@ app.post('/magictask/asana/refresh', function(request, response) {
 	});
 
 	function output(d,err){
-		response.send(d,err);
+		response.status(200).json(d);
 		
 	};
 
