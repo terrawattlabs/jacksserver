@@ -137,7 +137,7 @@ app.get('/magictask/asana/auth', function(request, response) {
 			user_email = jsonbody.data.email;
 			user_name = jsonbody.data.name;
 			user_refresh_token = jsonbody.refresh_token;
-			var respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
+			var respURL = "http://magic-task.stamplayapp.com/#/success/asana" 
 			+ "?token=" + user_token
 			+ "&id=" + user_id
 			+ "&id=" + user_email
