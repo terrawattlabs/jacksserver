@@ -143,7 +143,8 @@ app.get('/magictask/asana/auth', function(request, response) {
 
 	});
 
-		response.redirect(respURL);
+		// response.redirect(respURL);
+		response.send('i think it worked');
    
 });
 
