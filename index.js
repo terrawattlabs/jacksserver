@@ -123,24 +123,27 @@ app.get('/magictask/asana/auth', function(request, response) {
                 code: c
             }}, 
 		function(err,httpResponse,body){
-			user_token = body.access_token;
-			user_id = body.data.id;
-			user_email = body.data.email;
-			user_name = body.data.name;
-			user_refresh_token = body.refresh_token;
-			respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
-			+ "?token=" + user_token
-			+ "&id=" + user_id
-			+ "&id=" + user_email
-			+ "&id=" + user_name
-			+ "&id=" + user_refresh_token;
 
-			response.redirect(respURL);
+			console.log(body.access_token);
+			console.log(body.data);
+			// user_token = body.access_token;
+			// user_id = body.data.id;
+			// user_email = body.data.email;
+			// user_name = body.data.name;
+			// user_refresh_token = body.refresh_token;
+			// respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
+			// + "?token=" + user_token
+			// + "&id=" + user_id
+			// + "&id=" + user_email
+			// + "&id=" + user_name
+			// + "&id=" + user_refresh_token;
+
+			respURL = 'http://www.google.com';
 
 
 	});
 
-		
+		response.redirect(respURL);
    
 });
 
