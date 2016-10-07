@@ -124,9 +124,9 @@ app.get('/magictask/asana/auth', function(request, response) {
             }}, 
 		function(err,httpResponse,body){
 
-			console.log(body.access_token);
-			console.log(httpResponse.data);
-			console.log(httpResponse.access_token);
+			console.log(body);
+			console.log('spacing    provide some spacing please    ');
+			console.log(httpResponse);
 			// user_token = body.access_token;
 			// user_id = body.data.id;
 			// user_email = body.data.email;
