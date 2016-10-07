@@ -113,51 +113,50 @@ app.get('/magictask/asana/auth', function(request, response) {
 		var user_email;
 		var user_name;
 		var user_refresh_token;
-		var respURL = 'http://www.google.com';
 
 
 
-		var promise = new Promise(function (resolve, reject) {
-			  req.post({url:'https://app.asana.com/-/oauth_token', 
+
+
+	req.post({url:'https://app.asana.com/-/oauth_token', 
 		form: {
                 grant_type: 'authorization_code',
                 client_id: '192803788558688',
                 client_secret: 'e23526b7eb519cdfb53459eed6737e52',
                 redirect_uri: 'https://jacksserver.herokuapp.com/magictask/asana/auth',
                 code: c
-            }})
-			});
+            }}, 
+		function(err,httpResponse,body){
 
-		promise.then(function(err,httpResponse,body){
+			console.log(body.aaccess_token);
 			var jsonbody = JSON.parse(body);
-			
-			console.log(body);
+			console.log(jsonbody.access_token);
 
 			user_token = jsonbody.access_token;
 			user_id = jsonbody.data.id;
 			user_email = jsonbody.data.email;
-			user_name = body.data.name;
+			user_name = jsonbody.data.name;
 			user_refresh_token = jsonbody.refresh_token;
-			respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
+			var respURL = "https://magic-task.stamplayapp.com/#/success/asana" 
 			+ "?token=" + user_token
 			+ "&id=" + user_id
 			+ "&id=" + user_email
 			+ "&id=" + user_name
 			+ "&id=" + user_refresh_token;
 
-			respURL = respURL + "&body=" + body;
 
-			response.writeHead(301,
-			  {Location: respURL}
+			output(respURL);
+	});
+
+	function output(u){
+		response.writeHead(301,
+			  {Location: u}
 			);
 			response.end();
-		})
-
-
-	
+		// response.send('i think it worked');
+	};
 
 		
-		// response.send('i think it worked');
    
 });
 
