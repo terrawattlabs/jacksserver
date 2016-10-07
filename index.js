@@ -160,6 +160,37 @@ app.get('/magictask/asana/auth', function(request, response) {
    
 });
 
+app.get('/magictask/asana/refresh', function(request, response) {
+
+		var refresh = request.body.refresh;
+
+	req.post({url:'https://app.asana.com/-/oauth_token', 
+		form: {
+                grant_type: 'refresh_token',
+                client_id: '192803788558688',
+                client_secret: 'e23526b7eb519cdfb53459eed6737e52',
+                redirect_uri: 'https://jacksserver.herokuapp.com/magictask/asana/auth',
+                code: refresh
+            }}, 
+		function(err,httpResponse,body){
+
+			console.log(body.aaccess_token);
+			var jsonbody = JSON.parse(body);
+			console.log(jsonbody);
+
+
+			output(jsonbody,err);
+	});
+
+	function output(d,err){
+		response.send(d,err);
+		
+	};
+
+		
+   
+});
+
 
 
 
