@@ -165,6 +165,7 @@ app.post('/magictask/asana/refresh', function(request, response) {
 
 	
 		console.log(request.body.refresh);
+		var refresh = request.body.refresh;
 		
 
 	req.post({url:'https://app.asana.com/-/oauth_token', 
@@ -173,7 +174,7 @@ app.post('/magictask/asana/refresh', function(request, response) {
                 client_id: '192803788558688',
                 client_secret: 'e23526b7eb519cdfb53459eed6737e52',
                 redirect_uri: 'https://jacksserver.herokuapp.com/magictask/asana/auth',
-                code: refresh
+                refresh_token: refresh
             }}, 
 		function(err,httpResponse,body){
 
