@@ -9,6 +9,7 @@ var greetings = require("./custom/greetings.js");
 var asana = require("./custom/asana.js");
 var shortid = require('shortid');
 var Promise = require('promise');
+var cors = require('cors');
 
 // end modules
 
@@ -20,6 +21,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.set('port', (process.env.PORT || 5000));
 
