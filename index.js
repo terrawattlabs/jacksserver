@@ -161,7 +161,7 @@ app.get('/magictask/asana/auth', function(request, response) {
 });
 
 app.post('/magictask/asana/refresh', function(request, response) {
-	response.set('Access-Control-Allow-Origin', 'https://magic-task.stamplayapp.com');
+	response.set('Access-Control-Allow-Origin', '*');
 
 	
 		console.log(request.body.refresh);
