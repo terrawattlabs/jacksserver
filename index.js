@@ -477,7 +477,7 @@ app.post('/refersion', function(request, response) {
 
 		req(options, callback);
 
-	
+	response.send(200);
 });
 
 
