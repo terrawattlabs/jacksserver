@@ -11,7 +11,8 @@ var shortid = require('shortid');
 var Promise = require('promise');
 var cors = require('cors');
 var Converter = require("csvtojson").Converter;
-var converter = new Converter({});
+var fs = require("fs"); 
+
 
 // end modules
 
@@ -450,12 +451,19 @@ app.post('/slackinteractive', function(request, response) {
 
 app.post('/refersion', function(request, response) {
 		
-		var file_url = request.body.public_url;
+		//CSV File Path or CSV String or Readable Stream Object
+			var csvFileName = request.body.public_url;
 
-		 converter.fromFile(file_url,function(err,result){
- 				console.log(result);
+		//new converter instance
+			var csvConverter = new Converter({});
+
+		//end_parsed will be emitted once parsing finished
+			csvConverter.on("end_parsed",function(jsonObj){
+			    console.log(jsonObj); //here is your result json object
 			});
 
+		//read from file
+			fs.createReadStream(csvFileName).pipe(csvConverter);
 
 	response.send(200);
 });
