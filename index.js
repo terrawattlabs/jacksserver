@@ -10,6 +10,8 @@ var asana = require("./custom/asana.js");
 var shortid = require('shortid');
 var Promise = require('promise');
 var cors = require('cors');
+var Converter = require("csvtojson").Converter;
+var converter = new Converter({});
 
 // end modules
 
@@ -442,6 +444,41 @@ app.post('/slackinteractive', function(request, response) {
 	
 });
 
+
+
+// referral for Clear Estimates. To be moved to a new server later
+
+app.post('/refersion', function(request, response) {
+		 var options = {
+		  method: "POST",
+		  url: 'https://www.refersion.com/api/reporting/get_link',
+		  headers: {},
+		  json: {
+			  "refersion_public_key": "pub_21eda0e00765348d39a4",
+			  "refersion_secret_key": "sec_1cee53410cc2133bf3c1",
+			  "report_id": 12416
+			}
+		};
+		
+		 var callback = function (e, r, b){
+		 	if (!e && r.statusCode == 200) {
+			   
+			   console.log(b.download_link);
+			converter.fromFile(b.download_link,function(err,result){
+ 				console.log(result);
+			});
+
+	
+		  } else {
+		  	console.log(e);
+		  }
+
+		 };
+
+		req(options, callback);
+
+	
+});
 
 
 app.listen(app.get('port'), function() {
