@@ -469,8 +469,42 @@ app.post('/refersion', function(request, response) {
 });
 
 
+
+// Green Panel MVP 
+
+app.get('/terrawatt/', function(request, response) {
+  response.send(request.query.email);
+
+  // 	 var options = {
+		//   method: "POST",
+		//   url: 'https://app.asana.com/-/oauth_token',
+		//   headers: {},
+		//   json: data
+		// };
+		
+		//  var callback = function (error, response, body){
+		//  	if (!error && response.statusCode == 200) {
+			   
+		// 	console.log('ran callback');
+
+	
+		//   } else {
+		//   	console.log(error);
+		//   }
+
+		//  };
+
+		// req(options, callback);
+
+
+});
+
+
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
 
 
