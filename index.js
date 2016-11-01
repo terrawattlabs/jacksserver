@@ -479,7 +479,7 @@ app.get('/terrawatt', function(request, response) {
   		email: request.query.email,
   		name: request.query.name,
   		customerid: request.query.customerid,
-  		answer: requeset.query.answer
+  		answer: request.query.answer
   	}
 
   	 var options = {
