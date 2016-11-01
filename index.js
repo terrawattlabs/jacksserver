@@ -475,26 +475,33 @@ app.post('/refersion', function(request, response) {
 app.get('/terrawatt', function(request, response) {
   response.send(request.query.email);
 
-  // 	 var options = {
-		//   method: "POST",
-		//   url: 'https://app.asana.com/-/oauth_token',
-		//   headers: {},
-		//   json: data
-		// };
+  	var data = {
+  		email: request.query.email,
+  		name: request.query.name,
+  		customerid: request.query.customerid,
+  		answer: requeset.query.answer
+  	}
+
+  	 var options = {
+		  method: "POST",
+		  url: 'https://hooks.zapier.com/hooks/catch/1071793/6vyufz/',
+		  headers: {},
+		  json: data
+		};
 		
-		//  var callback = function (error, response, body){
-		//  	if (!error && response.statusCode == 200) {
+		 var callback = function (error, response, body){
+		 	if (!error && response.statusCode == 200) {
 			   
-		// 	console.log('ran callback');
+			console.log('ran callback');
 
 	
-		//   } else {
-		//   	console.log(error);
-		//   }
+		  } else {
+		  	console.log(error);
+		  }
 
-		//  };
+		 };
 
-		// req(options, callback);
+		req(options, callback);
 
 
 });
