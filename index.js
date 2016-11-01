@@ -472,7 +472,7 @@ app.post('/refersion', function(request, response) {
 
 // Green Panel MVP 
 
-app.get('/terrawatt/', function(request, response) {
+app.get('/terrawatt', function(request, response) {
   response.send(request.query.email);
 
   // 	 var options = {
