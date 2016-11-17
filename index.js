@@ -40,7 +40,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/cool', function(request, response) {
-  response.send("hello world");
+  response.send(cool());
 });
 
 app.get('/magictask/createid', function(request, response) {
