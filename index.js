@@ -3,7 +3,7 @@ var opbeat = require('opbeat').start()
 // modules go here
 var RSVP = require('rsvp');
 var cool = require('cool-ascii-faces');
-//var moment = require('moment');
+var moment = require('moment');
 var req = require('request');
 var greetings = require("./custom/greetings.js");
 var asana = require("./custom/asana.js");
@@ -12,7 +12,7 @@ var Promise = require('promise');
 var cors = require('cors');
 var Converter = require("csvtojson").Converter;
 var fs = require("fs"); 
-var ba = require('beeradvocate-api');
+// var ba = require('beeradvocate-api');
 
 
 // end modules
@@ -511,10 +511,12 @@ app.get('/terrawatt', function(request, response) {
 
 app.get('/beer', function(request, response) {
 
-	ba.beerSearch("Two Hearted", function(beers) {
+
+	response.send('beer');
+	// ba.beerSearch("Two Hearted", function(beers) {
     	
-	});
-	response.send(beers);
+	// });
+	// response.send(beers);
   
 });
 
