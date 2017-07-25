@@ -512,8 +512,9 @@ app.get('/terrawatt', function(request, response) {
 app.get('/beer', function(request, response) {
 
 	ba.beerSearch("Two Hearted", function(beers) {
-    	response.send(beers);
+    	
 	});
+	response.send(beers);
   
 });
 
