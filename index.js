@@ -12,7 +12,6 @@ var Promise = require('promise');
 var cors = require('cors');
 var Converter = require("csvtojson").Converter;
 var fs = require("fs"); 
-// var ba = require('beeradvocate-api');
 
 
 // end modules
@@ -505,19 +504,6 @@ app.get('/terrawatt', function(request, response) {
 		req(options, callback);
 
 
-});
-
-// beer calculator
-
-app.get('/beer', function(request, response) {
-
-
-	response.send('beer');
-	// ba.beerSearch("Two Hearted", function(beers) {
-    	
-	// });
-	// response.send(beers);
-  
 });
 
 
