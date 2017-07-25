@@ -3,7 +3,7 @@ var opbeat = require('opbeat').start()
 // modules go here
 var RSVP = require('rsvp');
 var cool = require('cool-ascii-faces');
-var moment = require('moment');
+//var moment = require('moment');
 var req = require('request');
 var greetings = require("./custom/greetings.js");
 var asana = require("./custom/asana.js");
